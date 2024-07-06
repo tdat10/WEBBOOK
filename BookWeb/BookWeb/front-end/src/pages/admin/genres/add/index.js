@@ -48,12 +48,16 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
   }
 }))
 
-const AddGenre = () => {
+const AddGenre = () => 
+{
+
   const router = useRouter()
+  
   const [genre, setGenre] = useState({
     name: '',
     description: '',
   })
+
   const onChange = (e) => {
     setGenre(prev => {
       return {
@@ -62,6 +66,8 @@ const AddGenre = () => {
       }
     })
   }
+
+
   const postData = async() => {
     const token = localStorage.getItem('token')
     try {
@@ -80,6 +86,7 @@ const AddGenre = () => {
     }
     
   }
+
   return (
     <CardContent>
       <form id='genre-form'>

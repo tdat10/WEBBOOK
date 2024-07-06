@@ -91,6 +91,7 @@ const RegisterPage = () => {
       // Kiểm tra các giá trị đầu vào trước khi gửi
       if (!values.username || !values.password || !values.email) {
         alert('Vui lòng điền đầy đủ thông tin đăng ký')
+        
         return
       }
 

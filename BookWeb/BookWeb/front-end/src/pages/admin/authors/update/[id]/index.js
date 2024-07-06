@@ -65,13 +65,13 @@ const UpdateAuthor = () => {
       try {
         const authorsData = await fetch(`${BASE_URL}/author/${router.query.id}`).then(resp => resp.json())
         setAuthor(authorsData)
-        // console.log(authorsData)
+       
       } catch (error) {
         console.error('Failed to fetch data:', error)
       }
     }
     fetchData()
-  }, [])
+  }, )
 
   const fileOnChange = async file => {
     const { files } = file.target

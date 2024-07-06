@@ -60,6 +60,7 @@ const ProductDetail = params => {
     const token = getToken()
     if (!token) {
       router.push('/pages/login')
+
       return
     }
     try {
@@ -76,6 +77,7 @@ const ProductDetail = params => {
     const token = getToken()
     if (!token) {
       router.push('/pages/login')
+      
       return
     }
     try {

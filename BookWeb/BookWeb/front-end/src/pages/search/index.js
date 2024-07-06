@@ -10,7 +10,9 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import Book from 'src/components/Book'
 import {useRouter} from 'next/router'
+
 const BASE_URL ='http://127.0.0.1:8080/api'
+
 const SORT = {
   PRICE_ASC: '{"sort": "ASC", "by": "price"}',
   PRICE_DESC: '{"sort": "DESC", "by": "price"}',
@@ -19,6 +21,7 @@ const SORT = {
   TITLE_ASC: '{"sort": "ASC", "by": "title"}',
   TITLE_DESC: '{"sort": "DESC", "by": "title"}'
 }
+
 const SearchPage = () => {
   const [value, setValue] = useState('')
   const router = useRouter()
@@ -38,6 +41,7 @@ const SearchPage = () => {
     if(sort) query = `${query}&sort=${sort}` 
     if(by) query = `${query}&by=${by}`
     console.log(`${BASE_URL}/book${query}`)
+
     const fetchData = async () => {
       const fetchGenres = fetch(`${BASE_URL}/genre`).then(res => res.json())
       const fetchBooks = fetch(`${BASE_URL}/book${query}`).then(res => res.json())
@@ -51,6 +55,7 @@ const SearchPage = () => {
     } 
     fetchData()
   }, [router.isReady, router.query])
+
   const handleChange = event => {
     setValue((prev) => {
       router.replace({
@@ -59,9 +64,11 @@ const SearchPage = () => {
           ...JSON.parse(event.target.value)
         }
       })
+
       return event.target.value
     })
   }
+
   return (
     <Box bgcolor='#F0F0F0'>
       <Container maxWidth='lg' sx={{ bgcolor: 'transparent' }}>
@@ -96,6 +103,7 @@ const SearchPage = () => {
                                 genre: newGenres
                               }
                             })
+
                             return newGenres
                           })
                         }
@@ -108,6 +116,7 @@ const SearchPage = () => {
                                 genre: newGenres
                               }
                             })
+
                             return newGenres
                           })
                         }
@@ -146,10 +155,11 @@ const SearchPage = () => {
             </Box>
             <Grid container>
               {books && books.map((book) =>(
+              // eslint-disable-next-line react/jsx-key
               <Grid item md={3} marginBottom={2}>
                 <Book book={book}/>
               </Grid>
-              ))}
+              ))}             
             </Grid>
           </Grid>
         </Grid>
